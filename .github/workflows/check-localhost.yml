@@ -31,13 +31,13 @@ jobs:
         run: |
           npm run servor --port=8000 &
           sleep 5
-          curl -v http://localhost:8000/package.json
-          curl -v http://localhost:9000/package.json
+          curl -v http://localhost:8000/
+          curl -v http://localhost:9000/
 
       - name: Check localhost (sirv)
         continue-on-error: true
         run: |
           npm run sirv --port=9000 &
           sleep 5
-          curl -v http://localhost:8000/package.json
-          curl -v http://localhost:9000/package.json
+          curl -v http://localhost:8000/
+          curl -v http://localhost:9000/

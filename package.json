@@ -1,7 +1,7 @@
 {
   "scripts": {
     "servor": "servor ./ index.html ${npm_config_port}",
-    "sirv": "sirv-cli ./ --port ${npm_config_port}"
+    "sirv": "sirv ./ --port ${npm_config_port}"
   },
   "devDependencies": {
     "servor": "4.0.2",
