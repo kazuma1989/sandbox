@@ -13,7 +13,10 @@ await setTimeout(5_000);
 
 const result = await Promise.allSettled([
   fetch("http://localhost:8001/"),
+  fetch("http://172.18.0.2:8001/"),
+
   fetch("http://localhost:9001/"),
+  fetch("http://172.18.0.2:9001/"),
 ]);
 
 console.log(...result);
