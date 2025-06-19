@@ -1,11 +1,11 @@
 import { spawn } from "node:child_process";
 import { setTimeout } from "node:timers/promises";
 
-spawn("npm", ["run", "servor", "--port=8001"], {
+using _servor = spawn("npm", ["run", "servor", "--port=8001"], {
   stdio: "inherit",
 });
 
-spawn("npm", ["run", "sirv", "--port=9001"], {
+using _sirv = spawn("npm", ["run", "sirv", "--port=9001", "--", "--host", "172.18.0.2"], {
   stdio: "inherit",
 });
 
