@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "scripts": {
     "servor": "servor ./ index.html ${npm_config_port}",
     "sirv": "sirv ./ --port ${npm_config_port}"
