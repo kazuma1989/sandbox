@@ -1,0 +1,43 @@
+name: localhostに接続できるか試す
+
+on:
+  push:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  check_localhost:
+    name: check_localhost
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.53.0-noble
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.16.0
+          cache: npm
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Check localhost (servor)
+        continue-on-error: true
+        run: |
+          npm run servor --port=8000 &
+          sleep 5
+          curl -v http://localhost:8000/package.json
+          curl -v http://localhost:9000/package.json
+
+      - name: Check localhost (sirv)
+        continue-on-error: true
+        run: |
+          npm run sirv --port=9000 &
+          sleep 5
+          curl -v http://localhost:8000/package.json
+          curl -v http://localhost:9000/package.json
